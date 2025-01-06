@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1ccj87q8icgc"]
+
+[ext_resource type="Script" path="res://enemies/enemy_generator.gd" id="1_tnrl3"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="2_h172f"]
+[ext_resource type="PackedScene" uid="uid://do8kovgtd845u" path="res://enemies/green_enemy.tscn" id="2_ta6yh"]
+
+[node name="EnemyGenerator" type="Node2D"]
+script = ExtResource("1_tnrl3")
+GreenEnemyScene = ExtResource("2_ta6yh")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("2_h172f")
+
+[node name="GreenEnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
