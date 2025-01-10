@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://buhk4f2lxlx3u"]
+[gd_scene load_steps=29 format=3 uid="uid://buhk4f2lxlx3u"]
 
 [ext_resource type="Texture2D" uid="uid://c45jqgt0qw53h" path="res://assets/ship.png" id="1_1rwxh"]
 [ext_resource type="Script" path="res://player_ship/ship.gd" id="1_eocui"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="13_yotoj"]
 [ext_resource type="PackedScene" uid="uid://cws51pvav0gk8" path="res://effects/explosion_effect.tscn" id="14_mnnkt"]
 [ext_resource type="Script" path="res://components/destroyed_component.gd" id="15_mnuld"]
+[ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="16_4mx55"]
+[ext_resource type="AudioStream" uid="uid://4mc2w48vyywl" path="res://sounds/laser_sound.wav" id="16_s8o5s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aepjl"]
 atlas = ExtResource("1_1rwxh")
@@ -158,7 +160,6 @@ scene = ExtResource("8_gfajw")
 
 [node name="FireRateTimer" type="Timer" parent="."]
 wait_time = 0.4
-autostart = true
 
 [node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("9_4b4i1")
@@ -188,3 +189,9 @@ script = ExtResource("15_mnuld")
 actor = NodePath("..")
 stats_component = NodePath("../StatsComponent")
 destroy_effect_spawner_component = NodePath("../ExplosionSpawnerComponent")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_s8o5s")
+volume_db = -5.0
+bus = &"Sounds"
+script = ExtResource("16_4mx55")
